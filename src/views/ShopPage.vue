@@ -1,8 +1,8 @@
 <template>
 
 <div>
-    <h1>About Page</h1>
-    <p>This is the about page.</p>
+    <h1>Shop Page</h1>
+    <p>This is the Shop page.</p>
   </div>
 
 </template>
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: 'MenuPage'
+  name: 'ShopPage'
 }
 </script>
 

@@ -8,19 +8,25 @@
     <NavBar/>
   </header>
 
-  <HomePage/>
-  <router-view></router-view>
+
+  <div>
+    <router-view v-slot="{Component}">
+      <transition>
+        <Component :is="Component" />
+      </transition>
+    </router-view>
+  </div>
+
+
 </template>
 
 <script>
 import NavBar from './components/NavBar.vue'
-import HomePage from './components/Home.vue'
 
 export default {
   name: 'App',
   components: {
-    NavBar,
-    HomePage
+    NavBar
   }
 }
 </script>
@@ -44,6 +50,8 @@ header{
   width: 100vw;
   background-color: #F1ECE9;
   padding: 15px;
+  overflow-x: hidden;
+  box-sizing: border-box;
 
 }
 </style>

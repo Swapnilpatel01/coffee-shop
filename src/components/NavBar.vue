@@ -7,7 +7,8 @@
         <Dropdown title="Menu" :items="services" class="dropdown"/>
 
 
-        <img class="logo" src="../assets/CoffeeShop.svg" alt="" height="32">
+        <a href="/"><img class="logo" src="../assets/CoffeeShop.svg" alt="" height="32"></a>
+        
 
         <div class="navbar-icons">
             <span class="material-symbols-outlined"><a class="navbar-links" href="#menu">Search</a></span>
@@ -34,15 +35,15 @@
             services: [
                 {
                     title: 'Shop',
-                    link: '#'
+                    link: '/shop'
                 },
                 {
                     title: 'Order',
-                    link: '#'
+                    link: '/order'
                 },
                 {
-                    title: 'Contact',
-                    link: '#'
+                    title: 'About',
+                    link: '/about'
                 },
             ]
         };
@@ -60,6 +61,8 @@ nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+
 }
 
 nav .menu-item{
@@ -89,7 +92,7 @@ nav .menu-item a{
     width: 200px;
     display: block;
     margin: 0 auto;
-    padding-left: 32px;
+    padding-left: 64px;
 }
 
 

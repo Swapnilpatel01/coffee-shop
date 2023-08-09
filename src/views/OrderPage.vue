@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>About Page</h1>
-    <p>This is the about page.</p>
+    <h1>Order Page</h1>
+    <p>This is the Order page.</p>
   </div>
 
 
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: 'AboutPage'
+  name: 'OrderPage'
 }
 </script>
 
