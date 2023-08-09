@@ -3,7 +3,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
-  <NavBar/>
+  
+  <header>
+    <NavBar/>
+  </header>
+
   <HomePage/>
   <router-view></router-view>
 </template>
@@ -33,5 +37,13 @@ body, html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+}
+
+
+header{
+  width: 100vw;
+  background-color: #F1ECE9;
+  padding: 15px;
+
 }
 </style>
