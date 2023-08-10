@@ -8,12 +8,20 @@
     <NavBar/>
   </header>
 
-
+<!-- 
   <div>
     <router-view v-slot="{Component}">
       <transition>
         <Component :is="Component" />
       </transition>
+    </router-view>
+  </div> -->
+
+  <div>
+    <router-view v-slot="{Component}" class="router">
+    <transition>
+      <Component :is="Component" />
+    </transition>
     </router-view>
   </div>
 
@@ -47,11 +55,15 @@ body, html {
 
 
 header{
-  width: 100vw;
+  width: screen;
   background-color: #F1ECE9;
   padding: 15px;
-  /* overflow-x: hidden; */
   box-sizing: border-box;
 
+}
+
+
+.router{
+  overflow-x: hidden;
 }
 </style>
