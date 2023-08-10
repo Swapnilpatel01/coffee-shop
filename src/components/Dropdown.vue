@@ -11,11 +11,15 @@
 
         <transition name="slide-fade" appear>
             <div class="sub-menu" v-if="isOpen">
+                
                 <div v-for="(item, i) in items" :key="i" class="menu-items">
-                    <a :href="item.link">{{ item.title }}</a>
+                    <a :href="item.link">
+                        <div>{{ item.title }}</div>
+                    </a>
                 </div>
             </div>
         </transition>
+
 
     </div>
 

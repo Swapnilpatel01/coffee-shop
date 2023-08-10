@@ -50,7 +50,7 @@ header{
   width: 100vw;
   background-color: #F1ECE9;
   padding: 15px;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   box-sizing: border-box;
 
 }

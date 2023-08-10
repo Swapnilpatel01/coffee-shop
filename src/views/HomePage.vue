@@ -8,14 +8,11 @@
 
     <div class="view-menu">
       <p>View Menu</p>
-      <span class="material-symbols-outlined">expand_more</span>
+      <span class="material-symbols-outlined arrow">expand_more</span>
     </div>
 
-    <br>
-    <br>
-    
     <div>
-      <img src="../assets/menu.png" alt="">
+      <img src="../assets/menu.png" alt="" width="85%" class="menupic">
     </div>
 
 
@@ -35,6 +32,8 @@
     .pic{
       margin-top: 1vw;
       padding-right: 150px;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
     }
 
     .view-menu{
@@ -46,10 +45,44 @@
       text-align: center; /* Center the text */
       /* background-color: rgba(255, 255, 255, 0.8); Optional background color */
       padding: 10px; /* Optional padding */
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+      animation-delay: 1s;
     }
 
     .view-menu p{
       font-size: large;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .menupic{
+      margin-top: 100px;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .arrow {
+        animation: fadeIn 2s forwards;
+        animation: bounce 2s 3;
+        animation-delay: 2s;
     }
 
   </style>
