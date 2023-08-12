@@ -11,20 +11,14 @@
 
   </main>
 
-
 </template>
-
 
 <style scoped>
 
 </style>
-
 
 <script>
 export default {
   name: 'AboutPage'
 }
 </script>
-
-
-

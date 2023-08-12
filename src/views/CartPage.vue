@@ -4,7 +4,6 @@
       <p>This is the Shopping Cart page.</p>
     </div>
   
-  
   </template>
   
   <style scoped>
@@ -17,4 +16,3 @@
     name: 'CartPage'
   }
   </script>
-  

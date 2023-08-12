@@ -1,13 +1,10 @@
 <template>
 
     <div class="menu-item" @click="isOpen = !isOpen">
-
-
         <div class="outside">
             <span class="material-symbols-outlined menuicon">Menu</span>
             <p>MENU</p>
         </div>
-
 
         <transition name="slide-fade" appear>
             <div class="sub-menu" v-if="isOpen">
@@ -18,8 +15,6 @@
                 </div>
             </div>
         </transition>
-
-
     </div>
 
 </template>
@@ -85,8 +80,6 @@ nav .menu-item .sub-menu {
 }
 
 </style>
-
-
 
 <script>
 export default{

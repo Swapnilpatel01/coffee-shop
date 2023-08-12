@@ -1,6 +1,6 @@
 <template>
 
-<div>
+  <div>
     <h1>Shop Page</h1>
     <p>This is the Shop page.</p>
   </div>
@@ -11,12 +11,8 @@
 
 </style>
 
-
 <script>
 export default {
   name: 'ShopPage'
 }
 </script>
-
-
-

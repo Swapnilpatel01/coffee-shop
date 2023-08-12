@@ -6,10 +6,8 @@
 
         <Dropdown title="Menu" :items="services" class="dropdown"/>
 
-
         <a href="/"><img class="logo" src="../assets/CoffeeShop.svg" alt="" height="32"></a>
-        
-
+    
         <div class="navbar-icons">
             <span class="material-symbols-outlined"><a class="navbar-links" href="#menu">Search</a></span>
             <span class="material-symbols-outlined"><a class="navbar-links" href="login" @click="goToLogin">account_circle</a></span>
@@ -17,6 +15,7 @@
                 <span class="material-symbols-outlined"><a class="navbar-links" href="cart" @click="goToCart">shopping_cart</a></span>
             </div>
         </div>
+
     </nav>
 
 </template>
@@ -83,18 +82,14 @@ nav .menu-item{
     transition: 0.5s;
 }
 
-
-
 nav .menu-item a{
     color: inherit;
     text-decoration: none;
 }
 
-
 .dropdown{
     float: left;
 }
-
 
 .logo {
     width: 200px;
@@ -102,7 +97,6 @@ nav .menu-item a{
     margin: 0 auto;
     padding-left: 64px;
 }
-
 
 .navbar-icons {
     display: flex;
@@ -128,7 +122,5 @@ nav .menu-item a{
     text-decoration: none !important;
     color: inherit;
 }
-
-
 
 </style>
