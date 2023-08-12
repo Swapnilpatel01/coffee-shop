@@ -8,14 +8,6 @@
     <NavBar/>
   </header>
 
-<!-- 
-  <div>
-    <router-view v-slot="{Component}">
-      <transition>
-        <Component :is="Component" />
-      </transition>
-    </router-view>
-  </div> -->
 
   <div>
     <router-view v-slot="{Component}" class="router">

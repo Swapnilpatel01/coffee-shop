@@ -43,13 +43,13 @@
 
     .view-menu{
       font-family: 'Figtree', sans-serif;
-      position: relative;; /* Fixed positioning */
+      position: relative;; 
       bottom: 1vmin; /* Position at the bottom of the screen */
-      left: 0; /* Align to the left */
-      width: 100%; /* Take up the full width */
+      left: 0; 
+      width: 100%; 
       text-align: center; /* Center the text */
       /* background-color: rgba(255, 255, 255, 0.8); Optional background color */
-      padding: 10px; /* Optional padding */
+      padding: 10px; 
       opacity: 0;
       animation: fadeIn 2s forwards;
       animation-delay: 1s;

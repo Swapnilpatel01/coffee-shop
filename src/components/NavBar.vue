@@ -37,8 +37,8 @@
                     link: '/shop'
                 },
                 {
-                    title: 'Order',
-                    link: '/order'
+                    title: 'Café',
+                    link: '/cafe'
                 },
                 {
                     title: 'About',
@@ -100,11 +100,13 @@ nav .menu-item a{
 
 .navbar-icons {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     margin-right: 30px;
 }
 
-.navbar-icons a {
+
+/* OLD ANIMATION AND ICONS */
+/* .navbar-icons a {
     transition: all 0.5s ease;
     background: #F1ECE9;
     border-radius: 100px;
@@ -116,7 +118,38 @@ nav .menu-item a{
 .navbar-icons a:hover {
     background-color: #e0dbd8;
     box-shadow: inset 4px 4px 8px #d1cdc5, inset -4px -4px 8px #ffffff;
+} */
+
+
+.navbar-icons a {
+    position: relative; /* Added */
+    transition: all 0.5s ease-out;
+    border-radius: 100px;
+    padding: 10px;
+    display: inline-block;
+    font-size: 28px;
 }
+
+.navbar-icons a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: black; 
+    bottom: 0;
+    left: 50%;
+    transition: all 0.3s ease-out;
+}
+
+.navbar-icons a:hover {
+    font-weight: bold;
+}
+
+.navbar-icons a:hover::after {
+    width: 100%; /* Full width on hover */
+    left: 0; /* Align to the left */
+}
+
 
 .navbar-links {
     text-decoration: none !important;

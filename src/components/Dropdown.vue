@@ -19,18 +19,38 @@
 
 </template>
 
-
 <style>
 .menuicon{
     cursor: pointer;
 }
 
-nav .menu-item .sub-menu {
+
+.sub-menu {
+    position: absolute;
+    background-color: #fff;
+    top: 55px;
+    width: 200px; /* Increased width */
+    padding: 15px;
+    margin: 0;
+    border-radius: 0px 0px 16px 16px;
+    overflow: hidden;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Added shadow */
+}
+
+.menu-items {
+    transition: all 0.5s ease-out;
+    padding: 10px; /* Added padding */
+    cursor: pointer; /* Added cursor */
+}
+
+
+
+/* nav .menu-item .sub-menu {
 
     position:absolute;
     background-color: #fff;
-    top: 55px;
-    width: 100px;
+    top: 0px;
+    width: 500px;
     margin: 0;
     align-items: left;
     text-align: left;
@@ -39,17 +59,35 @@ nav .menu-item .sub-menu {
 }
 
 .menu-items{
-    
+    transition: all 0.5s ease-out;
     background-color: #FFF;
     padding: 15px;
     top: 55px;
     width: 100%;
-    overflow: hidden;
-    z-index: -1;
+    
+} */
+
+.menu-items::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 50px;
+    background-color: black; 
+    transition: all 0.3s ease-out;
 }
+
 
 .menu-items:hover{
     background-color: #F1ECE9;
+    font-weight: bold;
+}
+
+.menu-items:hover::after {
+    width: 50%;
+    left: 60 px;
+    /* align-items: center; */
+    /* left: 0; Align to the left */
 }
 
 
@@ -70,7 +108,7 @@ nav .menu-item .sub-menu {
 }
 
 
-.outside{
+.outside {
     cursor: pointer;
     display: flex;
     justify-content: space-between;
