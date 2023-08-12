@@ -12,9 +12,9 @@
 
         <div class="navbar-icons">
             <span class="material-symbols-outlined"><a class="navbar-links" href="#menu">Search</a></span>
-            <span class="material-symbols-outlined"><a class="navbar-links" href="#menu">account_circle</a></span>
+            <span class="material-symbols-outlined"><a class="navbar-links" href="login" @click="goToLogin">account_circle</a></span>
             <div>
-                <span class="material-symbols-outlined"><a class="navbar-links" href="#menu">shopping_cart</a></span>
+                <span class="material-symbols-outlined"><a class="navbar-links" href="cart" @click="goToCart">shopping_cart</a></span>
             </div>
         </div>
     </nav>
@@ -44,9 +44,17 @@
                 {
                     title: 'About',
                     link: '/about'
-                },
+                }
             ]
         };
+    },
+    methods: {
+        goToLogin() {
+            this.$router.push('/login');
+        },
+        goToCart() {
+            this.$router.push('/cart');
+        }
     }
 }
 
