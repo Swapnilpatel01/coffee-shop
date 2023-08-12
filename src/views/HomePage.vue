@@ -5,13 +5,13 @@
     <img src="../assets/homepage.svg" alt="" width="700" class="pic">
 
 
-  <div>
-    <div class="view-menu" @click="scrollToSection">
-        <p>View Menu</p>
-        <span class="material-symbols-outlined arrow">expand_more</span>
+    <div>
+      <div class="view-menu" @click="scrollToSection">
+          <p>View Menu</p>
+          <span class="material-symbols-outlined arrow">expand_more</span>
+      </div>
+        <img src="../assets/menu.png" class="menupic">
     </div>
-      <img src="../assets/menu.png" class="menupic">
-  </div>
 
   </main>
 
