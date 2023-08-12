@@ -5,16 +5,13 @@
     <img src="../assets/homepage.svg" alt="" width="700" class="pic">
 
 
-
-    <div class="view-menu">
-      <p>View Menu</p>
-      <span class="material-symbols-outlined arrow">expand_more</span>
+  <div>
+    <div class="view-menu" @click="scrollToSection">
+        <p>View Menu</p>
+        <span class="material-symbols-outlined arrow">expand_more</span>
     </div>
-
-    <div>
-      <img src="../assets/menu.png" alt="" width="85%" class="menupic">
-    </div>
-
+      <img src="../assets/menu.png" class="menupic">
+  </div>
 
   </main>
 
@@ -23,8 +20,16 @@
   
   <script>
   export default {
-    name: 'HomePage'
-  }
+    name: 'HomePage',
+    methods: {
+      scrollToSection() {
+        const image = document.querySelector('.menupic');
+        if (image) {
+          image.scrollIntoView({behavior: 'smooth'})
+        }
+      },
+    },
+  };
   </script>
   
   <style scoped>
@@ -48,6 +53,7 @@
       opacity: 0;
       animation: fadeIn 2s forwards;
       animation-delay: 1s;
+      cursor: pointer;
     }
 
     .view-menu p{
@@ -64,7 +70,8 @@
     }
 
     .menupic{
-      margin-top: 100px;
+      margin-top: 200px;
+      width: 90%;
     }
 
     @keyframes bounce {
