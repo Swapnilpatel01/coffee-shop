@@ -35,7 +35,7 @@
   <style scoped>
 
     .pic{
-      margin-top: 1vw;
+      margin-top: 3vw;
       padding-right: 150px;
       opacity: 0;
       animation: fadeIn 2s forwards;
