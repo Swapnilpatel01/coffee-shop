@@ -49,7 +49,7 @@ body, html {
 header{
   width: screen;
   background-color: #F1ECE9;
-  padding: 15px;
+  /* padding: 15px; */
   box-sizing: border-box;
 
 }
