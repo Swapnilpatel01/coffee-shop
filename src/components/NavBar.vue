@@ -9,11 +9,29 @@
         <a href="/"><img class="logo" src="../assets/CoffeeShop.svg" alt="" height="32"></a>
     
         <div class="navbar-icons">
+
             <span class="material-symbols-outlined"><a class="navbar-links" href="#menu">Search</a></span>
-            <span class="material-symbols-outlined"><a class="navbar-links" href="login" @click="goToLogin">account_circle</a></span>
+
+            <!-- <span class="material-symbols-outlined"><a class="navbar-links" href="login" @click="goToLogin">account_circle</a></span> -->
+            <!-- <a class="navbar-links" href="login" @click="handleSignOut" v-if="isLoggedIn" style="font-size: large;">Sign Out</a> -->
+            
+
+            <!-- Display sign out icon if user is logged in -->
+            <span class="material-symbols-outlined" v-if="isLoggedIn">
+                <a class="navbar-links" @click="handleSignOut">logout</a>
+            </span>
+            
+            <!-- Display account_circle icon if user is not logged in -->
+            <span class="material-symbols-outlined" v-else>
+                <a class="navbar-links" href="login" @click="goToLogin">account_circle</a>
+            </span>
+            
+
             <div>
                 <span class="material-symbols-outlined"><a class="navbar-links" href="cart" @click="goToCart">shopping_cart</a></span>
             </div>
+
+
         </div>
 
     </nav>
@@ -21,13 +39,43 @@
 </template>
 
 <script>
+/* eslint-disable */ 
    import Dropdown from './Dropdown.vue';
-
+   import { onMounted, ref } from 'vue';
+   import {getAuth, onAuthStateChanged, signOut} from "firebase/auth";
+   import router from '@/router';
 
    export default {
     name: 'NavBar',
     components: {
         Dropdown
+    },
+    setup() {
+        const isLoggedIn = ref(false); //changes as auth state changes
+
+        let auth;
+            onMounted(() => {
+            auth = getAuth();
+                onAuthStateChanged(auth, (user) => {
+                    if(user){
+                        isLoggedIn.value = true;
+                    }
+                    else{
+                        isLoggedIn.value = false;
+                    }
+                });
+        });
+
+        const handleSignOut = () => {
+            signOut(auth).then(() => {
+                router.push("/");
+            });
+        };
+
+        return {
+            isLoggedIn,
+            handleSignOut
+        };
     },
     data() {
         return {
@@ -53,7 +101,7 @@
         },
         goToCart() {
             this.$router.push('/cart');
-        }
+        }   
     }
 }
 

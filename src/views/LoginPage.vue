@@ -1,27 +1,42 @@
 <template>
-    
   <div class="card-container">
     <div class="card">
-      <h1>SIGN UP & LOGIN</h1>
 
-      <form action="">  
+      <h1>LOGIN</h1>
+      <p v-if="errMsg" id="errorMsg">{{ errMsg }}</p>
+      <!-- <p>sdfkjds</p> -->
+
+      <form action="" @submit.prevent>  
+
         <div class="container">        
-          <input type="text" placeholder="Username" name="uname" required>
-          <input type="password" placeholder="Password" name="psw" required>
+          <input type="text" placeholder="Email" v-model="email" required> <!-- Bind email -->
+          <input type="password" placeholder="Password" v-model="password" required> <!-- Bind password -->
+
         </div>
 
         <div class="remember-me">
+
           <label >
             <input type="checkbox" checked="checked" name="remember">
             <span class="tooltip">Remember me</span>
           </label>
+
           <a href="#" class="forgot-password">Forgot Password?</a>
-          <button type="submit">Login</button>
+
+          <div class="buttons">
+            <button type="submit" @click="login">Login</button>
+
+            <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+
+            <button id="googbtn" type="submit" @click="signInWithGoogle">Sign In With Google</button>
+          </div>
+
         </div>
 
         <div class="signup-link">
-          Don't have an account? <a href="/signup">Sign Up</a>
+          Don't have an account? <a href="/register">Sign Up</a>
         </div>
+
       </form>
     </div>
   </div>
@@ -64,13 +79,12 @@ input[type=text], input[type=password] {
   font-weight: bolder;
 }
 
-.remember-me{
-  display: flex;
-  /* width: 100%;
-  margin-top: 8px;
-  float: left; */
-  justify-content: space-between;
-  align-items: center;
+.remember-me {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center; /* Center-align elements */
+    gap: 10px; /* Space between elements */
 }
 
 .tooltip{
@@ -91,9 +105,11 @@ input[type=text], input[type=password] {
 }
 
 .forgot-password {
-  float: left;
+  margin-left: auto;
   text-decoration: none;
   color: #007BFF;
+  /* width: 100%; */
+  text-align: right;
 }
 
 
@@ -102,31 +118,60 @@ input[type=text], input[type=password] {
 } */
 
 button {
-  float: right;
+  /* float: right; */
   background-color: #BDB2A7;
   color: white;
   padding: 14px 20px; /* Increased padding for a more balanced look */
-  margin: 8px 0;
+  margin: 10px 0;
   border: none;
   cursor: pointer;
-  width: auto; /* Auto width to fit the content */
+  width: 100; /* Auto width to fit the content */
   font-size: larger;
   font-weight: bold;
   border-radius: 20px;
   transition: 0.3s; /* Transition effect for smooth hover */
 }
 
+.buttons{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 button:hover {
   background-color: #A29B91; /* Slightly darker shade on hover */
 }
 
+button[type="submit"] {
+    background-color: #BDB2A7;
+}
+
+button[type="submit"]:hover {
+    background-color: #A29B91;
+}
+
+#googbtn{
+    background-color: #4285F4; /* Google color */
+    color: white;
+}
+
+#googbtn:hover {
+    background-color: #357ABD; /* Darker Google color on hover */
+}
+
+
+#errorMsg{
+  color: red;
+  font-weight: bold;
+  font-size: large;
+}
 
 .signup-link {
   text-align: center;
   margin-top: 10px;
 }
-
-
 
 
 </style>
@@ -135,7 +180,75 @@ button:hover {
 
 
 <script>
+
+/* eslint-disable */   
+//REMOVE THIS LINE LATER
+  import { ref } from "vue";
+  import { getAuth, signInWithEmailAndPassword } from "firebase/auth"; //used this API to create user
+  import { useRouter } from 'vue-router';
+
+/*
+FIREBASE AUTH ERROR CODES
+
+- Auth/Invalid-email
+- Auth/user-not-found
+- Auth/wrong-password 
+- Auth/user-disabled
+
+
+*/
+
+
   export default {
-    name: 'LoginPage'
+    name: 'LoginPage',
+    setup() {
+      const email = ref(""); // get ref to vue router
+      const password = ref(""); // get ref to v-model
+      const errMsg = ref("") //error message
+      const router = useRouter(); // get ref to our router
+
+      const login = () => {
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, email.value, password.value)
+          .then((data) => {
+            console.log("logged IN!", data);
+            // console.log(auth.currentUser);
+            router.push('/feed'); //TEMP PAGE redirect to feed page if successfully complteteed regustersation
+
+          })
+          .catch((error) => {
+            console.log(error.code);
+
+            switch (error.code) {
+              case "auth/invalid-email":
+                errMsg.value = "Invalid E-mail";
+                break;
+              case "auth/user-not-found":
+                errMsg.value = "No account was associated with that email";
+                break;
+              case "auth/wrong-password":
+                errMsg.value = "Incorrect user/password"; //used for security purposes
+                break;
+              default:
+                errMsg.value = "Email or password was incorrect";
+                break;
+            }
+
+            // alert(error.message);
+          });
+      };
+
+      const signInWithGoogle = () => {
+        console.log("test");
+      };
+
+      return {
+        email,
+        password,
+        errMsg,
+        login,
+        signInWithGoogle
+      };
+    }
   }
 </script>
