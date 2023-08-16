@@ -24,11 +24,11 @@
           <a href="#" class="forgot-password">Forgot Password?</a>
 
           <div class="buttons">
-            <button type="submit" @click="login">Login</button>
+            <button type="button" @click="login">Login</button>
 
             <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
 
-            <button id="googbtn" type="submit" @click="signInWithGoogle">Sign In With Google</button>
+            <button id="googbtn" type="button" @click="signInWithGoogle">Sign In With Google</button>
           </div>
 
         </div>
