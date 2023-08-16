@@ -7,14 +7,19 @@
         <Dropdown title="Menu" :items="services" class="dropdown"/>
 
         <a href="/"><img class="logo" src="../assets/CoffeeShop.svg" alt="" height="32"></a>
-    
+
         <div class="navbar-icons">
+            
+            <!-- TODO: NEED TO STYLE THIS PROPERLY -->
+            <div class="notification" v-if="notification">
+                {{ notification }}
+            </div> 
 
             <span class="material-symbols-outlined"><a class="navbar-links" href="#menu">Search</a></span>
 
             <!-- <span class="material-symbols-outlined"><a class="navbar-links" href="login" @click="goToLogin">account_circle</a></span> -->
             <!-- <a class="navbar-links" href="login" @click="handleSignOut" v-if="isLoggedIn" style="font-size: large;">Sign Out</a> -->
-            
+                       
 
             <!-- Display sign out icon if user is logged in -->
             <span class="material-symbols-outlined" v-if="isLoggedIn">
@@ -25,12 +30,10 @@
             <span class="material-symbols-outlined" v-else>
                 <a class="navbar-links" href="login" @click="goToLogin">account_circle</a>
             </span>
-            
 
             <div>
                 <span class="material-symbols-outlined"><a class="navbar-links" href="cart" @click="goToCart">shopping_cart</a></span>
             </div>
-
 
         </div>
 
@@ -52,7 +55,8 @@
     },
     setup() {
         const isLoggedIn = ref(false); //changes as auth state changes
-
+        const notification = ref("") 
+        
         let auth;
             onMounted(() => {
             auth = getAuth();
@@ -68,13 +72,25 @@
 
         const handleSignOut = () => {
             signOut(auth).then(() => {
+                isLoggedIn.value = false;
+                notification.value = "You have successfully signed out.";
+                console.log("signed out");
+                
+                setTimeout(() => {
+                    notification.value = '';
+                }, 5000)
+
                 router.push("/");
+            })
+            .catch((error) => {
+                console.error("Error signing out:", error)
             });
         };
 
         return {
             isLoggedIn,
-            handleSignOut
+            handleSignOut,
+            notification
         };
     },
     data() {
@@ -202,6 +218,15 @@ nav .menu-item a{
 .navbar-links {
     text-decoration: none !important;
     color: inherit;
+    cursor: pointer;
+}
+
+.notification {
+  background-color: #e8f5e9; /* A light green shade for successful messages */
+  border: 1px solid #4CAF50; /* Green border */
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
 }
 
 </style>
