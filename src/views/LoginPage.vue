@@ -203,34 +203,33 @@ FIREBASE AUTH ERROR CODES
     name: 'LoginPage',
     setup() {
       const storedEmail = localStorage.getItem('rememberedEmail');
-      // const storedButton = localStorage.getItem('rememberMeChecked');
+      const storedButton = localStorage.getItem('rememberMeChecked');
       const email = ref(storedEmail || ""); // get ref to vue router
       const password = ref(""); // get ref to v-model
       const errMsg = ref("") //error message
       const router = useRouter(); // get ref to our router
-      // const rememberMe = ref(storedButton ? JSON.parse(storedButton) : false)
-      const rememberMe = ref(false)
+      const rememberMe = ref(storedButton === 'true' ? true : false)
+
+
+      watch(rememberMe, (newState) => {
+              localStorage.setItem('rememberMeChecked', newState.toString());
+              if (rememberMe.value == true) {
+                localStorage.setItem('rememberedEmail', email.value);
+              } else {
+                localStorage.removeItem('rememberedEmail', email.value);
+              }
+      })
 
       const login = () => {
         const auth = getAuth();
-
+        
         setPersistence(auth, rememberMe ? browserLocalPersistence : browserSessionPersistence)
           .then(() => {
-            // watch(rememberMe, (newState) => {
-            //   if (rememberMe.value == true) {
-            //     localStorage.setItem('rememberedEmail', email.value);
-            //     localStorage.setItem('rememberMeChecked', newState);
-            //   } else {
-            //     localStorage.removeItem('rememberedEmail', email.value);
-            //   }
-
-            // })
-            rememberMe.value ? localStorage.setItem('rememberedEmail', email.value): localStorage.removeItem('rememberedEmail')
             signInWithEmailAndPassword(auth, email.value, password.value)
               .then((data) => {
                 console.log("logged IN!", data);
                 // console.log(auth.currentUser);
-                router.push('/feed'); //TEMP PAGE redirect to feed page if successfully complteteed regustersation
+                router.push('/'); 
 
               })
           .catch((error) => {
