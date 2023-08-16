@@ -211,19 +211,20 @@ FIREBASE AUTH ERROR CODES
       const rememberMe = ref(storedButton === 'true' ? true : false)
 
 
-      watch(rememberMe, (newState) => {
-              localStorage.setItem('rememberMeChecked', newState.toString());
-              if (rememberMe.value == true) {
-                localStorage.setItem('rememberedEmail', email.value);
+      watch(rememberMe, (newState) => { // watches the state of the remember me button (whether it is checked or unchecked)
+              localStorage.setItem('rememberMeChecked', newState.toString()); // data stored in localStorage persists even after browser is closed; stores key-value pairs; 'rememberMeChecked' : {true or false, depending on button}
+              if (rememberMe.value == true) { // if button is checked
+                localStorage.setItem('rememberedEmail', email.value); // keep button checked (stays persistent)
               } else {
-                localStorage.removeItem('rememberedEmail', email.value);
+                localStorage.removeItem('rememberedEmail', email.value); // if unchecked, then remove it from localStorage and will remain unchecked even when browser is refreshed
               }
       })
 
       const login = () => {
         const auth = getAuth();
-        
-        setPersistence(auth, rememberMe ? browserLocalPersistence : browserSessionPersistence)
+
+        setPersistence(auth, rememberMe ? browserLocalPersistence : browserSessionPersistence) // if rememberMe == true (user has checked the box), then browserLocalPersistence will keep the user signed in even after browser is closed 
+                                                                                              //and vice versa for browserSessionPersistence
           .then(() => {
             signInWithEmailAndPassword(auth, email.value, password.value)
               .then((data) => {
