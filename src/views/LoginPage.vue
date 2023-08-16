@@ -17,8 +17,7 @@
         <div class="remember-me">
 
           <label >
-            <input type="checkbox" checked="checked" name="remember">
-            <span class="tooltip">Remember me</span>
+            <input class="tooltip" type="checkbox" checked="checked" name="remember" v-model="rememberMe"> Remember Me
           </label>
 
           <a href="#" class="forgot-password">Forgot Password?</a>
@@ -183,8 +182,8 @@ button[type="submit"]:hover {
 
 /* eslint-disable */   
 //REMOVE THIS LINE LATER
-  import { ref } from "vue";
-  import { getAuth, signInWithEmailAndPassword } from "firebase/auth"; //used this API to create user
+  import { ref, watch } from "vue";
+  import { getAuth, signInWithEmailAndPassword, setPersistence, browserLocalPersistence, browserSessionPersistence } from "firebase/auth"; //used this API to create user
   import { useRouter } from 'vue-router';
 
 /*
@@ -202,20 +201,37 @@ FIREBASE AUTH ERROR CODES
   export default {
     name: 'LoginPage',
     setup() {
-      const email = ref(""); // get ref to vue router
+      const storedEmail = localStorage.getItem('rememberedEmail');
+      // const storedButton = localStorage.getItem('rememberMeChecked');
+      const email = ref(storedEmail || ""); // get ref to vue router
       const password = ref(""); // get ref to v-model
       const errMsg = ref("") //error message
       const router = useRouter(); // get ref to our router
+      // const rememberMe = ref(storedButton ? JSON.parse(storedButton) : false)
+      const rememberMe = ref(false)
 
       const login = () => {
         const auth = getAuth();
-        signInWithEmailAndPassword(auth, email.value, password.value)
-          .then((data) => {
-            console.log("logged IN!", data);
-            // console.log(auth.currentUser);
-            router.push('/feed'); //TEMP PAGE redirect to feed page if successfully complteteed regustersation
 
-          })
+        setPersistence(auth, rememberMe ? browserLocalPersistence : browserSessionPersistence)
+          .then(() => {
+            // watch(rememberMe, (newState) => {
+            //   if (rememberMe.value == true) {
+            //     localStorage.setItem('rememberedEmail', email.value);
+            //     localStorage.setItem('rememberMeChecked', newState);
+            //   } else {
+            //     localStorage.removeItem('rememberedEmail', email.value);
+            //   }
+
+            // })
+            rememberMe.value ? localStorage.setItem('rememberedEmail', email.value): localStorage.removeItem('rememberedEmail')
+            signInWithEmailAndPassword(auth, email.value, password.value)
+              .then((data) => {
+                console.log("logged IN!", data);
+                // console.log(auth.currentUser);
+                router.push('/feed'); //TEMP PAGE redirect to feed page if successfully complteteed regustersation
+
+              })
           .catch((error) => {
             console.log(error.code);
 
@@ -235,7 +251,7 @@ FIREBASE AUTH ERROR CODES
             }
 
             // alert(error.message);
-          });
+          })});
       };
 
       const signInWithGoogle = () => {
@@ -247,8 +263,9 @@ FIREBASE AUTH ERROR CODES
         password,
         errMsg,
         login,
-        signInWithGoogle
+        signInWithGoogle,
+        rememberMe
       };
-    }
+    }, 
   }
 </script>
