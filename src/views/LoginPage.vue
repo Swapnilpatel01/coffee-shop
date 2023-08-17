@@ -184,7 +184,7 @@ button[type="submit"]:hover {
 /* eslint-disable */   
 //REMOVE THIS LINE LATER
   import { ref, watch } from "vue";
-  import { getAuth, signInWithEmailAndPassword, setPersistence, browserLocalPersistence, browserSessionPersistence } from "firebase/auth"; //used this API to create user
+  import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, setPersistence, browserLocalPersistence, browserSessionPersistence } from "firebase/auth"; //used this API to create user
   import { useRouter } from 'vue-router';
 
 /*
@@ -256,9 +256,34 @@ FIREBASE AUTH ERROR CODES
       };
 
       const signInWithGoogle = () => {
-        console.log("test");
-      };
+        // console.log("test");
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(getAuth(), provider)
+          .then((result) => {
+            console.log(result.user)
+            router.push("/feed") //change to cart
+          })
+          .catch((error) => {
+            console.error("Error signing in with Google:", error);
 
+            // Handle specific error codes differently if needed
+            switch (error.code) {
+                case 'auth/account-exists-with-different-credential':
+                    alert('An account already exists with the same email address but different sign-in credentials. Sign in using a provider associated with this email address.');
+                    break;
+                case 'auth/popup-closed-by-user':
+                    alert('The popup has been closed before finalizing the operation.');
+                    break;
+                case 'auth/cancelled-popup-request':
+                    alert('This can happen if multiple popups are triggered at once, or the user closed the popup.');
+                    break;
+                default:
+                    alert('An error occurred while signing in with Google. Please try again.');
+                    break;
+            }
+          });
+      };
+      
       return {
         email,
         password,

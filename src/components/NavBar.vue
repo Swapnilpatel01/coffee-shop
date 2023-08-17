@@ -15,25 +15,42 @@
                 {{ notification }}
             </div> 
 
-            <span class="material-symbols-outlined"><a class="navbar-links" href="#menu">Search</a></span>
+            <!-- <span class="material-symbols-outlined"><a class="navbar-links" href="#menu">Search</a></span> -->
+            <a href="#menu">
+                <img src="../assets/icons/search_FILL0_wght400_GRAD0_opsz40.svg" class="navbar-links" alt="">
+            </a>
 
             <!-- <span class="material-symbols-outlined"><a class="navbar-links" href="login" @click="goToLogin">account_circle</a></span> -->
             <!-- <a class="navbar-links" href="login" @click="handleSignOut" v-if="isLoggedIn" style="font-size: large;">Sign Out</a> -->
                        
 
             <!-- Display sign out icon if user is logged in -->
-            <span class="material-symbols-outlined" v-if="isLoggedIn">
+            <!-- <span class="material-symbols-outlined" v-if="isLoggedIn">
                 <a class="navbar-links" @click="handleSignOut">logout</a>
-            </span>
+            </span> -->
+
+            <a href="" @click="handleSignOut" v-if="isLoggedIn">
+                <img src="../assets/icons/logout_FILL0_wght400_GRAD0_opsz48.svg" class="navbar-links" >
+            </a>
             
             <!-- Display account_circle icon if user is not logged in -->
-            <span class="material-symbols-outlined" v-else>
+            <!-- <span class="material-symbols-outlined" v-else>
                 <a class="navbar-links" href="login" @click="goToLogin">account_circle</a>
-            </span>
+            </span> -->
 
-            <div>
+            <a href="login" v-else @click="goToLogin">
+                <img src="../assets/icons/account_circle_FILL0_wght400_GRAD0_opsz40.svg" class="navbar-links" alt="">
+            </a>
+
+
+            <a href="cart" @click="goToCart">
+                <img src="../assets/icons/shopping_cart_FILL0_wght400_GRAD0_opsz48.svg" class="navbar-links" alt="">
+            </a>
+            
+
+            <!-- <div>
                 <span class="material-symbols-outlined"><a class="navbar-links" href="cart" @click="goToCart">shopping_cart</a></span>
-            </div>
+            </div> -->
 
         </div>
 
@@ -219,6 +236,7 @@ nav .menu-item a{
     text-decoration: none !important;
     color: inherit;
     cursor: pointer;
+    width: 30px;
 }
 
 .notification {

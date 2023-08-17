@@ -7,7 +7,7 @@
 
     <div>
       <div class="view-menu" @click="scrollToSection">
-          <p>View Menu</p>
+          <p>View Café Menu</p>
           <span class="material-symbols-outlined arrow">expand_more</span>
       </div>
         <img src="../assets/menu.png" class="menupic">

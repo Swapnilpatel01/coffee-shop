@@ -4,7 +4,7 @@
     <h1>CAFÉ</h1>
   </div> -->
 
-  <img src="../assets/banner.png" alt="" class="banner">
+  <img src="../assets/banner-cafe.svg" alt="" class="banner">
 
 </template>
 

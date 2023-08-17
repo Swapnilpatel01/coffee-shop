@@ -1,59 +1,105 @@
 <template>
+  <div class="card-container">
+    <div class="card">
 
-    <h1>Create an Account</h1>
+      <h1>Create an Account</h1>
 
-    <p><input type="text" placeholder="Email" v-model="email"></p>
-    <p><input type="password" placeholder="Password" v-model="password"></p>
+      <form action="" @submit.prevent>  
 
-    <p><button @click="register">Submit</button></p>
-    <p><button @click="signInWithGoogle">Sign In With Google</button></p>
+        <div class="container">        
+          <input type="text" placeholder="Email" v-model="email" required>
+          <input type="password" placeholder="Password" v-model="password" required>
+        </div>
 
+        <div class="buttons">
+          <button type="button" @click="register">Submit</button>
+          <button id="googbtn" type="button" @click="signInWithGoogle">Sign In With Google</button>
+        </div>
 
+        <div class="signup-link">
+          Already have an account? <a href="/login">Login</a>
+        </div>
+
+      </form>
+    </div>
+  </div>
 </template>
   
   
   
     
 <style scoped>
-  
-  input[type=text], input[type=password] {
-    width: 50%;
-    padding: 16px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    font-size: large;
-    font-weight: bolder;
-  }
-  
-  button {
-    /* float: right; */
-    background-color: #BDB2A7;
-    color: white;
-    padding: 14px 20px; /* Increased padding for a more balanced look */
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: auto; /* Auto width to fit the content */
-    font-size: larger;
-    font-weight: bold;
-    border-radius: 20px;
-    transition: 0.3s; /* Transition effect for smooth hover */
-  }
-  
-  button:hover {
-    background-color: #A29B91; /* Slightly darker shade on hover */
-  }
-  
-  
-  .signup-link {
-    text-align: center;
-    margin-top: 10px;
-  }
-  
-  
-  
+  .card-container {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.card {
+  margin: 50px;
+  height: 50%;
+  width: 35%;
+  padding: 20px;
+  background-color: white;
+  font-family: 'Figtree', sans-serif;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.container {
+  width: 100%;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 16px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: large;
+  font-weight: bolder;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+button {
+  background-color: #BDB2A7;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: auto;
+  font-size: larger;
+  font-weight: bold;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #A29B91;
+}
+
+#googbtn {
+  background-color: #4285F4;
+  color: white;
+}
+
+#googbtn:hover {
+  background-color: #357ABD;
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 10px;
+}
   
 </style>
   

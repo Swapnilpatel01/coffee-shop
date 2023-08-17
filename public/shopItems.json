@@ -1,0 +1,51 @@
+[
+    {
+      "id": 1,
+      "name": "Dark Roast",
+      "price": 12.99,
+      "description": "A rich and full-bodied roast with deep, bold flavors.",
+      "origin": "Colombia",
+      "image": "path/to/dark-roast.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Medium Roast",
+      "price": 11.99,
+      "description": "Balanced flavor, aroma, and acidity. A favorite among many.",
+      "origin": "Brazil",
+      "image": "path/to/medium-roast.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Light Roast",
+      "price": 10.99,
+      "description": "Mild in flavor, this roast is for those who prefer a smoother cup.",
+      "origin": "Ethiopia",
+      "image": "path/to/light-roast.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Espresso Roast",
+      "price": 13.99,
+      "description": "Perfect for espresso machines. Rich, caramel-like sweetness.",
+      "origin": "Italy",
+      "image": "path/to/espresso-roast.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Organic Roast",
+      "price": 14.99,
+      "description": "100% organic beans for a natural and clean taste.",
+      "origin": "Peru",
+      "image": "path/to/organic-roast.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Decaf Roast",
+      "price": 10.49,
+      "description": "All the flavor without the caffeine. Perfect for evening brews.",
+      "origin": "Mexico",
+      "image": "path/to/decaf-roast.jpg"
+    }
+  ]
+  
