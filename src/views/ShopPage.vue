@@ -21,7 +21,7 @@
         <h2>{{ item.name }}</h2>
         <p>{{ item.description }}</p>
         <p>${{ item.price.toFixed(2) }}</p>
-        <button>Add to Cart</button>
+        <button @click="addToCart(item)">Add to Cart</button>
       </div>
   
     </div>
@@ -104,6 +104,16 @@ export default {
         this.items = data;
       });
   },
-  name: 'ShopPage'
+  name: 'ShopPage',
+  emits: ['add-to-cart'],
+
+methods: {
+  addToCart(item) {
+    // Emit an event to the parent component with the item to be added
+    this.$emit('add-to-cart', item);
+    console.log('Item added to cart:', item);
+  }
+}
+
 }
 </script>

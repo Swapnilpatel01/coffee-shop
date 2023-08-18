@@ -10,7 +10,7 @@
 
 
   <div>
-    <router-view v-slot="{Component}" class="router">
+    <router-view v-slot="{Component}" class="router" @add-to-cart="handleAddToCart" :cart="cart">
     <transition>
       <Component :is="Component" />
     </transition>
@@ -25,7 +25,20 @@ import NavBar from './components/NavBar.vue'
 
 export default {
   name: 'App',
-  components: {
+  data() {
+    return {
+      cart: JSON.parse(localStorage.getItem('cart') || '[]')
+    };
+  },
+  
+methods: {
+  handleAddToCart(item) {
+    this.cart.push(item);
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+    console.log('Cart updated:', this.cart);
+  }
+},
+components: {
     NavBar
   }
 }

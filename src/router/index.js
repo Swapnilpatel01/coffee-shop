@@ -74,12 +74,15 @@ const getCurrentUser = () => {
 };
 
 router.beforeEach(async(to, from, next) =>{
+    console.log('Navigating from:', from.fullPath, 'to:', to.fullPath);
     if (to.matched.some((record) => record.meta.requiresAuth)) { //check if to route needs auth then check if any records require auth
-        if (await getCurrentUser()) { //check current user in firebase
+        if (await getCurrentUser()) {
+        console.log('User authenticated, allowing navigation'); //check current user in firebase
             next(); //if valid we continue on
         } else{
             alert("you dont have access!")
-            next("/"); //else we redir them to home page
+            console.log('User not authenticated, redirecting to home');
+        next("/"); //else we redir them to home page
         }
     } else{
         next();

@@ -8,6 +8,7 @@
 
         <a href="/"><img class="logo" src="../assets/CoffeeShop.svg" alt="" height="32"></a>
 
+
         <div class="navbar-icons">
             
             <!-- TODO: NEED TO STYLE THIS PROPERLY -->
@@ -15,13 +16,13 @@
                 {{ notification }}
             </div> 
 
-            <!-- <span class="material-symbols-outlined"><a class="navbar-links" href="#menu">Search</a></span> -->
-            <a href="#menu">
+            <!-- <span class="material-symbols-outlined"><a class="navbar-links" href="#">Search</a></span> -->
+            <a href="#">
                 <img src="../assets/icons/search_FILL0_wght400_GRAD0_opsz40.svg" class="navbar-links" alt="">
             </a>
 
-            <!-- <span class="material-symbols-outlined"><a class="navbar-links" href="login" @click="goToLogin">account_circle</a></span> -->
-            <!-- <a class="navbar-links" href="login" @click="handleSignOut" v-if="isLoggedIn" style="font-size: large;">Sign Out</a> -->
+            <!-- <span class="material-symbols-outlined"><a class="navbar-links" href="#" @click="goToLogin">account_circle</a></span> -->
+            <!-- <a class="navbar-links" href="#" @click="handleSignOut" v-if="isLoggedIn" style="font-size: large;">Sign Out</a> -->
                        
 
             <!-- Display sign out icon if user is logged in -->
@@ -35,10 +36,10 @@
             
             <!-- Display account_circle icon if user is not logged in -->
             <!-- <span class="material-symbols-outlined" v-else>
-                <a class="navbar-links" href="login" @click="goToLogin">account_circle</a>
+                <a class="navbar-links" href="#" @click="goToLogin">account_circle</a>
             </span> -->
 
-            <a href="login" v-else @click="goToLogin">
+            <a href="#" v-else @click="goToLogin">
                 <img src="../assets/icons/account_circle_FILL0_wght400_GRAD0_opsz40.svg" class="navbar-links" alt="">
             </a>
 
