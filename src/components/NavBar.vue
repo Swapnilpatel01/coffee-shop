@@ -39,7 +39,7 @@
                 <a class="navbar-links" href="#" @click="goToLogin">account_circle</a>
             </span> -->
 
-            <a href="#" v-else @click="goToLogin">
+            <a href="login" v-else @click="goToLogin">
                 <img src="../assets/icons/account_circle_FILL0_wght400_GRAD0_opsz40.svg" class="navbar-links" alt="">
             </a>
 
