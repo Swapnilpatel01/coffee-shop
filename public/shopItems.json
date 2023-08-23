@@ -5,7 +5,7 @@
       "price": 12.99,
       "description": "A rich and full-bodied roast with deep, bold flavors.",
       "origin": "Colombia",
-      "image": "path/to/dark-roast.jpg"
+      "image": "Dark.webp"
     },
     {
       "id": 2,
@@ -13,7 +13,7 @@
       "price": 11.99,
       "description": "Balanced flavor, aroma, and acidity. A favorite among many.",
       "origin": "Brazil",
-      "image": "path/to/medium-roast.jpg"
+      "image": "Medium.webp"
     },
     {
       "id": 3,
@@ -21,7 +21,7 @@
       "price": 10.99,
       "description": "Mild in flavor, this roast is for those who prefer a smoother cup.",
       "origin": "Ethiopia",
-      "image": "path/to/light-roast.jpg"
+      "image": "Light.webp"
     },
     {
       "id": 4,
@@ -29,7 +29,7 @@
       "price": 13.99,
       "description": "Perfect for espresso machines. Rich, caramel-like sweetness.",
       "origin": "Italy",
-      "image": "path/to/espresso-roast.jpg"
+      "image": "Espresso.webp"
     },
     {
       "id": 5,
@@ -37,7 +37,7 @@
       "price": 14.99,
       "description": "100% organic beans for a natural and clean taste.",
       "origin": "Peru",
-      "image": "path/to/organic-roast.jpg"
+      "image": "Organic.webp"
     },
     {
       "id": 6,
@@ -45,7 +45,7 @@
       "price": 10.49,
       "description": "All the flavor without the caffeine. Perfect for evening brews.",
       "origin": "Mexico",
-      "image": "path/to/decaf-roast.jpg"
+      "image": "Decaf.webp"
     }
   ]
   
